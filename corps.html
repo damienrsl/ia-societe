@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>L'IA dans la société : 2, 5 et 15 ans</title>
+<style>
+/*KIT*/
+main{max-width:640px;margin:0 auto;position:relative;z-index:1;padding:0 16px 60px}
+.hero{padding:60px 4px 26px;position:relative}
+.hero .orbe{--d:70px;position:absolute;right:6px;top:44px;animation:souffle 6s ease-in-out infinite}
+@keyframes souffle{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.hero h1{font-size:33px;line-height:1.08;letter-spacing:-.03em;max-width:14ch}
+.hero p{margin:16px 0 0;font-size:16px;line-height:1.5;max-width:40ch;color:var(--texte-2)}
+.hero p b,.carte p b,.franc b,.spec p b,.spec li b,.chiffre p b,.modele b{color:var(--texte)}
+section{margin:34px 0}
+section>.etiquette{display:block;margin:0 4px 10px}
+.carte{padding:20px;margin-bottom:12px}
+.carte h2{font-size:23px;letter-spacing:-.02em;line-height:1.15}
+.carte h3{font-size:18px;letter-spacing:-.01em;margin:0}
+.carte>p{margin:10px 0 0;line-height:1.55;color:var(--texte-2)}
+.franc{border-left:2px solid var(--pan-2);padding:14px 16px;margin:14px 0 0;color:var(--texte-2);font-size:15px;line-height:1.5;border-radius:0 var(--r-m) var(--r-m) 0;background:rgba(40,95,255,.06)}
+.spec{padding:14px 0;border-top:1px solid var(--filet)}
+.spec:first-of-type{border-top:0;padding-top:4px}
+.num{font:600 12px var(--police-mono);color:var(--pan-3);letter-spacing:.06em}
+.spec h3{font-size:18px;margin-top:4px;letter-spacing:-.01em}
+.spec p{margin:6px 0 0;font-size:15px;line-height:1.5;color:var(--texte-2)}
+.spec ul{margin:8px 0 0;padding-left:18px;color:var(--texte-2);font-size:15px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:12px 0 0;font-size:15px}
+th,td{text-align:left;padding:9px 6px;border-top:1px solid var(--filet);vertical-align:top}
+th{font:600 11px var(--police-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--texte-3);border-top:0}
+td:not(:first-child),th:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+td b{color:var(--pan-3)}
+.chiffre{display:flex;gap:14px;align-items:baseline;padding:12px 0;border-top:1px solid var(--filet)}
+.chiffre:first-of-type{border-top:0;padding-top:2px}
+.chiffre .gros{font-family:var(--large);font-size:30px;letter-spacing:-.03em;color:var(--pan-3);min-width:92px;line-height:1}
+.chiffre p{margin:0;font-size:15px;line-height:1.45;color:var(--texte-2)}
+.modele{font-size:15px;line-height:1.55;margin:8px 0 0;padding:12px 14px;border-radius:var(--r-m);background:rgba(40,95,255,.06);color:var(--texte)}
+.modele small{display:block;font:600 11px var(--police-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--texte-3);margin-bottom:4px}
+.jauge{margin:10px 0 0}
+.jauge .ligne{display:grid;grid-template-columns:1fr auto;gap:10px;font-size:15px;color:var(--texte-2);align-items:center;padding:7px 0}
+.jauge .ligne b{color:var(--texte);font-weight:500}
+.jauge .ligne .v{font:600 13px var(--police-mono);color:var(--pan-3);min-width:88px;text-align:right}
+.barre{height:6px;border-radius:3px;background:rgba(36,54,184,.1);overflow:hidden;grid-column:1/-1}
+.barre i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--bleu-chat),var(--bleu-renard));transition:width 1.2s var(--ressort)}
+.puces{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.puce{background:rgba(255,255,255,.7);border:1px solid var(--filet);color:var(--texte-2);font:500 15px var(--police);padding:10px 15px;border-radius:var(--r-pilule);cursor:pointer;transition:all .3s var(--ressort);-webkit-tap-highlight-color:transparent}
+.puce.on{color:#fff;border-color:transparent;background:linear-gradient(135deg,var(--bleu-chat),var(--bleu-renard));box-shadow:0 6px 16px -6px rgba(36,54,184,.6);transform:scale(1.04)}
+.puce.faux{opacity:.4;transform:scale(.96)}
+.bilan{margin-top:14px;font-size:15px;color:var(--texte-2);line-height:1.5;min-height:22px}
+.suite{margin-top:12px;background:none;border:1px solid var(--filet);color:var(--pan-3);font:600 14px var(--police);padding:9px 15px;border-radius:var(--r-pilule);cursor:pointer;display:none}
+.suite.vu{display:inline-block}
+.score{font:600 11px var(--police-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--texte-3);margin-left:10px}
+.question{font-family:var(--large);font-size:19px;line-height:1.35;letter-spacing:-.02em;margin:12px 0 0}
+.pied{font-size:14px;color:var(--texte-3);line-height:1.6;margin:40px 4px 0}
+.pied a{color:var(--pan-3);text-decoration:none}
+.pied li{margin:4px 0}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <span class="orbe"></span>
+    <span class="etiquette">Damien et Emilio · le futur · au 19 novembre 2026</span>
+    <h1>L'IA dans la société : 2, 5 et 15 ans</h1>
+    <p>Ni catastrophe ni miracle. Ce que les chiffres montrent aujourd'hui, ce qui est probable ensuite, et ce qui est incertain. <b>Puis ce qui reste humain, ce que vous devez bosser, et comment en faire quelque chose qui dure.</b> Chaque chiffre a sa source en bas de page.</p>
+  </header>
+
+  <section>
+    <span class="etiquette">01 · Où on en est vraiment</span>
+    <div class="verre carte">
+      <h2>Pas de vague de licenciements. Une porte d'entrée qui se ferme.</h2>
+      <p>Trois ans après ChatGPT, l'emploi total n'a pas décroché. Mais le marché se ferme par le bas : les entreprises n'embauchent plus les débutants dont les tâches sont faisables par l'IA. C'est le signal le plus solide qu'on ait.</p>
+      <div class="grille">
+        <div class="chiffre"><span class="gros">−19 %</span><p><b>Emploi des 22-25 ans</b> dans les métiers les plus exposés aux États-Unis, par rapport à leurs pairs moins exposés. C'était −15 % en juillet 2025 : l'écart se creuse. Les expérimentés n'ont aucun écart.</p></div>
+        <div class="chiffre"><span class="gros">−28 %</span><p><b>Embauches en CDI des 21-29 ans en France</b> dans les métiers les plus exposés depuis fin 2022, contre −8 % dans les moins exposés. Chez les 50 ans et plus : aucun écart. En France, ça passe par les embauches, pas par les licenciements.</p></div>
+        <div class="chiffre"><span class="gros">22 %</span><p><b>Part des licenciements annoncés aux États-Unis citant l'IA</b> de janvier à mai 2026 (87 714 postes), première raison invoquée cinq mois d'affilée. Mais 55 % des employeurs regrettent ces coupes et la moitié de ceux qui ont vidé le service client vont réembaucher d'ici 2027.</p></div>
+        <div class="chiffre"><span class="gros">40 %</span><p><b>Des actifs américains utilisent l'IA générative pour leur travail</b> (troisième trimestre 2026). En Europe, 15 % en 2025. ChatGPT touche 1,2 milliard de personnes par semaine.</p></div>
+        <div class="chiffre"><span class="gros">17 h</span><p><b>Longueur de tâche logicielle qu'un agent réussit une fois sur deux</b> (avril 2026). C'était 4 minutes début 2023. Ça double tous les 4 à 7 mois. Sur les tâches « sales » du vrai travail, c'est bien moins.</p></div>
+        <div class="chiffre"><span class="gros">×1,9</span><p><b>Vitesse de progression des modèles d'Anthropic</b> depuis octobre 2025, mesurée de l'intérieur par un auditeur indépendant. Environ 80 % de cette accélération vient de l'IA qui fait elle-même la recherche. Aucun goulot d'étranglement clair identifié.</p></div>
+      </div>
+      <div class="franc"><b>Lecture froide.</b> La technique avance plus vite que l'économie ne l'absorbe. L'écart entre « ce que l'IA peut faire » et « ce que les entreprises en font » est aujourd'hui l'amortisseur. Il ne durera pas quinze ans.</div>
+    </div>
+    <div class="verre carte">
+      <h3>Les robots : réels, mais pas encore là</h3>
+      <div class="jauge">
+        <div class="ligne"><b>Humanoïdes occidentaux déployés chez des clients (mi-2026)</b><span class="v">≈ 100</span><div class="barre"><i style="width:1%"></i></div></div>
+        <div class="ligne"><b>Humanoïdes livrés par Unitree (Chine) en 2025</b><span class="v">5 500</span><div class="barre"><i style="width:4%"></i></div></div>
+        <div class="ligne"><b>Prévision la plus prudente pour 2035 (Goldman Sachs)</b><span class="v">1,4 M</span><div class="barre"><i style="width:35%"></i></div></div>
+        <div class="ligne"><b>Prévision la plus haute pour 2035 (Morgan Stanley)</b><span class="v">13 M</span><div class="barre"><i style="width:100%"></i></div></div>
+      </div>
+      <p>Autonomie de 1 à 4 heures, taux de réussite autour de 78 % quand l'industrie exige 95 %. Zéro licenciement attribué à un humanoïde. Le corps humain a encore dix ans d'avance.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="etiquette">02 · Dans 2 ans · 2028</span>
+    <div class="verre carte">
+      <h2>Le tri des tâches, pas encore des métiers</h2>
+      <p>Niveau de confiance : élevé. C'est la prolongation de ce qu'on voit déjà.</p>
+      <div class="grille">
+        <div class="spec"><span class="num">PRESQUE CERTAIN</span><h3>Le texte, l'image, la vidéo et le code coûtent zéro</h3><p>Une vidéo publicitaire, une photo produit, un script, une traduction, un site : produits en minutes. Ce qui a de la valeur n'est plus la production mais le choix, le vécu et la signature.</p></div>
+        <div class="spec"><span class="num">PRESQUE CERTAIN</span><h3>Les agents font des journées entières de travail numérique</h3><p>Si le doublement tient, un agent gère seul en 2028 des tâches bien définies de plusieurs jours : code, compta, dossiers, recherche. Il échoue encore sur le flou, le contexte et les gens.</p></div>
+        <div class="spec"><span class="num">PRESQUE CERTAIN</span><h3>Les postes de débutant tertiaire fondent</h3><p>Assistant, analyste junior, service client, saisie, rédaction web, graphisme d'exécution, montage simple, traduction, juriste junior. Pas des licenciements : des recrutements qui ne se font pas. L'écart jeunes exposés passe de 19 % à 25 ou 30 %.</p></div>
+        <div class="spec"><span class="num">PROBABLE</span><h3>Saturation de contenu artificiel et prime à l'humain</h3><p>Déjà : 26 % des consommateurs préfèrent le contenu créateur fait à l'IA, contre 60 % en 2023. 88 % disent que les vidéos IA ont affaibli leur confiance. Les plateformes étiquettent, les marques réclament du « vrai », de l'imparfait.</p></div>
+        <div class="spec"><span class="num">PROBABLE</span><h3>Le boomerang des entreprises</h3><p>Celles qui ont coupé trop vite réembauchent sous d'autres titres. Les gagnants ne sont pas ceux qui remplacent mais ceux qui produisent trois fois plus avec la même équipe.</p></div>
+        <div class="spec"><span class="num">PROBABLE</span><h3>Ce qui ne bouge pas</h3><p>Plombiers, électriciens, soignants, cuisiniers, vendeurs en magasin, artisans, chauffeurs : pénurie, pas remplacement. La demande en électriciens monte même, à cause des centres de données.</p></div>
+      </div>
+      <div class="franc"><b>En France.</b> Le CDI protège les gens en poste. L'ajustement tombe sur les jeunes diplômés d'école de commerce, de communication, de droit, d'informatique. Le tertiaire parisien est en première ligne. Le bâtiment, le soin et la restauration n'y voient presque rien.</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="etiquette">03 · Dans 5 ans · 2031</span>
+    <div class="verre carte">
+      <h2>La bascule du savoir codifié</h2>
+      <p>Niveau de confiance : moyen. La direction est claire, la vitesse ne l'est pas.</p>
+      <p>Stanford a trouvé la ligne de partage : l'emploi recule là où le métier repose sur du <b>savoir codifié</b> (ce qui s'apprend dans des livres, des procédures, des cours) et progresse là où il repose sur du <b>savoir tacite</b> (ce qui s'apprend en faisant, en se trompant, en côtoyant). À 5 ans, cette ligne devient la frontière de l'emploi.</p>
+      <table>
+        <tr><th>Fortement réduits</th><th>Transformés</th><th>En croissance</th></tr>
+        <tr><td>Saisie, guichet, courrier, secrétariat, caisse</td><td>Développeur, comptable, juriste, marketeur</td><td>Soin, aide à la personne</td></tr>
+        <tr><td>Service client de premier niveau</td><td>Médecin, enseignant (l'IA fait le diagnostic ou le cours, l'humain décide et accompagne)</td><td>Bâtiment, énergie, maintenance</td></tr>
+        <tr><td>Traduction, rédaction, montage et graphisme d'exécution</td><td>Manager (équipes plus petites, plus d'agents)</td><td>Métiers de l'IA et de la donnée</td></tr>
+        <tr><td>Analyse financière et back-office</td><td>Créateur de contenu (voir plus bas)</td><td>Vente en face à face, événementiel</td></tr>
+      </table>
+      <div class="grille">
+        <div class="chiffre"><span class="gros">+78 M</span><p><b>Solde net d'emplois dans le monde d'ici 2030</b> selon le Forum économique mondial : 170 millions créés, 92 millions détruits. Les emplois bougent plus qu'ils ne disparaissent. Mais ce ne sont pas les mêmes personnes qui perdent et qui gagnent.</p></div>
+        <div class="chiffre"><span class="gros">−11 %</span><p><b>Baisse d'emploi attendue d'ici 2035</b> pour les spécialistes financiers, les développeurs et les juristes selon les prévisionnistes de Metaculus. Les métiers « intelligents » sont plus touchés que les métiers manuels.</p></div>
+        <div class="chiffre"><span class="gros">+35 %</span><p><b>Postes d'entrée « seniorisés »</b> (qui exigent déjà des compétences de senior) depuis 2019, pendant que les postes d'entrée classiques reculent de 10 %. On n'embauche plus un junior, on embauche un junior qui pilote des agents.</p></div>
+        <div class="chiffre"><span class="gros">3,3 %</span><p><b>Croissance annuelle du PIB américain</b> attendue par l'économiste médian à 5 ans, contre 2 % de tendance. Pas les 10 à 15 % promis par certains patrons de laboratoire. Une accélération réelle, pas une explosion.</p></div>
+      </div>
+      <div class="franc"><b>Les robots en 2031.</b> Selon le calendrier de Morgan Stanley, les premiers métiers substitués à partir de 2028 sont la production, l'entrepôt, le nettoyage, la restauration et le soin de support. À 75 000 dollars l'unité, un robot se rembourse en 13 mois là où le salaire est haut et la tâche structurée. En 2031 : usines et logistique, pas les maisons ni les chantiers.</div>
+      <div class="franc"><b>La société.</b> Chômage des jeunes diplômés, débat sérieux sur une taxe ou un revenu lié à l'IA, règles européennes qui freinent, bulle financière possible (2 670 milliards de dollars de dépenses IA en 2026). Le fossé ne sera pas entre riches et pauvres mais entre ceux qui pilotent l'IA et ceux qui la subissent.</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="etiquette">04 · Dans 15 ans · 2041</span>
+    <div class="verre carte">
+      <h2>Deux futurs, pas un. Préparez-vous aux deux.</h2>
+      <p>Niveau de confiance : faible. Personne ne sait. Les experts eux-mêmes sont coupés en deux. Un plan sérieux tient dans les deux cas.</p>
+      <div class="grille-2">
+        <div class="modele"><small>Scénario A · la courbe continue</small><b>L'IA fait la majorité du travail cognitif.</b> Les humanoïdes sont dans la logistique, le bâtiment, le soin de support (deuxième vague à partir de 2036, troisième en 2040). Morgan Stanley compte 62,7 millions d'emplois américains substituables d'ici 2050 ; ce n'est pas 62,7 millions de chômeurs, mais c'est un monde où le travail salarié classique est minoritaire. Le capital compte plus que le travail : qui possède les systèmes, les audiences, les marques et les terrains gagne. Un revenu universel ou équivalent est en place ou en débat brûlant. Ce qui reste humain : présence, responsabilité, confiance, goût, relation.</div>
+        <div class="modele"><small>Scénario B · le plateau</small><b>L'IA reste un très bon outil.</b> Goulots d'étranglement : énergie, puces, données, fiabilité, acceptation sociale, régulation. Productivité en hausse de 1 à 1,5 point par an pendant dix ans puis retour à la normale : un PIB 30 % plus haut qu'autrement. Les métiers se transforment comme avec l'informatique : le comptable existe encore, il fait autre chose. Les perdants sont ceux qui ont refusé l'outil ; les gagnants ceux qui l'ont intégré tôt.</div>
+      </div>
+      <div class="franc"><b>Ce qui est vrai dans les deux cas.</b> Le corps, la présence physique et le vécu ne se téléchargent pas. La confiance se donne à une personne qui engage son nom, pas à un modèle. La propriété (marque, produit, audience directe, réseau) vaut plus que la compétence seule. Et savoir faire travailler l'IA est la compétence de base, comme lire.</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="etiquette">05 · Ce qui ne se remplace pas</span>
+    <div class="verre carte">
+      <h2>Les sept actifs humains, par ordre de solidité</h2>
+      <div class="grille">
+        <div class="spec"><span class="num">1</span><h3>Le vécu et la présence</h3><p>Tu étais à Shanghai, dans l'usine, tu as porté la veste trois semaines sous la pluie. C'est du savoir tacite : la seule catégorie où l'emploi monte. Une IA peut décrire une usine ; elle n'y a jamais mis les pieds, et le public le sait.</p></div>
+        <div class="spec"><span class="num">2</span><h3>Le visage qui engage sa responsabilité</h3><p>Une personne nommée qui dit « j'ai testé, je vous le conseille » et qui perd si elle ment. La confiance est l'actif qui monte le plus vite quand tout le reste devient synthétique.</p></div>
+        <div class="spec"><span class="num">3</span><h3>Le goût et le jugement</h3><p>Choisir, trancher, dire non. Les travailleurs expérimentés estiment que l'IA fait 10 points de moins de leurs tâches que ce que pensent les débutants : plus on connaît un métier, plus on voit ce qu'elle rate.</p></div>
+        <div class="spec"><span class="num">4</span><h3>La relation et la communauté</h3><p>Trois consommateurs sur cinq agissent sur la recommandation d'un créateur en qui ils ont confiance. Les marques paient de plus en plus pour des relations longues et des communautés serrées, de moins en moins pour du volume.</p></div>
+        <div class="spec"><span class="num">5</span><h3>La propriété</h3><p>Une marque, un produit, une liste de contacts directs, un réseau d'usines. L'IA ne possède rien. Un salaire ou un abonné sur une plateforme, c'est loué ; une marque et une liste, c'est à vous.</p></div>
+        <div class="spec"><span class="num">6</span><h3>Le monde physique</h3><p>Un vêtement, il faut le concevoir, le faire fabriquer, le toucher, le livrer, le reprendre. Chaque maillon physique est une protection pour dix ans au moins.</p></div>
+        <div class="spec"><span class="num">7</span><h3>Savoir piloter l'IA</h3><p>Celui qui l'utilise bien fait le travail de trois personnes. C'est l'actif le moins durable de la liste (tout le monde l'aura) mais sans lui les six autres ne suffisent pas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="etiquette">06 · Dans votre métier · ce qui meurt</span>
+    <div class="verre carte">
+      <h2>Créateur mode : la liste froide</h2>
+      <p>Ce que l'IA fait déjà ou fera d'ici 2 ans, aussi bien ou mieux, et pour presque rien :</p>
+      <ul style="margin:10px 0 0;padding-left:18px;color:var(--texte-2);font-size:15px;line-height:1.6">
+        <li>Le montage d'exécution, les sous-titres, les miniatures, les légendes, les hashtags.</li>
+        <li>La recherche, la veille, le dossier sur une marque, la comparaison de prix.</li>
+        <li>Les photos et vidéos produit : H&amp;M, Levi's, Guess, Valentino utilisent déjà des mannequins générés.</li>
+        <li>Le contenu « je reprends les infos sans rien apporter ». Tu l'as dit toi-même le 14 novembre : ce format est mort, l'IA le fait à l'infini.</li>
+        <li>Le sponsoring de pure portée : la portée devient bon marché (créateurs virtuels, contenus de marque générés). Le prix du post à l'unité baisse. Le prix de la crédibilité monte.</li>
+        <li>La curation sans signature : un site d'affiliation qui liste « les meilleurs produits » se fait écraser par les agents d'achat intégrés aux assistants. Une sélection signée, vécue et expliquée par une personne, non.</li>
+        <li>La négociation de premier niveau, les relances, la facturation, l'administratif.</li>
+      </ul>
+      <div class="franc"><b>Le piège.</b> Utiliser l'IA pour écrire ce que tu dis face caméra. Les agences disent déjà repérer « un script ChatGPT » et les audiences décrochent. L'IA fait tout autour de toi ; jamais à ta place devant l'objectif.</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="etiquette">07 · Ce que vous devez bosser</span>
+    <div class="verre carte">
+      <h2>Six chantiers, Damien et Emilio</h2>
+      <div class="grille">
+        <div class="spec"><span class="num">A</span><h3>Le terrain filmé</h3><p>Usines, voyages, tests dans la vraie vie, rencontres. C'est la matière première que l'IA ne peut pas fabriquer. Chaque heure de terrain vaut dix heures de bureau.</p></div>
+        <div class="spec"><span class="num">B</span><h3>Un point de vue tranché</h3><p>Guider, pas informer. « Voilà ce que j'achèterais et pourquoi, voilà ce que je ne toucherais pas. » Le risque de déplaire est le prix de la confiance.</p></div>
+        <div class="spec"><span class="num">C</span><h3>Un actif qu'on possède</h3><p>La marque de vêtements (produit physique, le plus défendable), une liste directe (mail, WhatsApp), un réseau d'usines réel. Objectif chiffré : moins de 50 % des revenus venant des collabs d'ici 3 ans.</p></div>
+        <div class="spec"><span class="num">D</span><h3>Piloter l'IA à fond, en coulisses</h3><p>Chaque tâche récurrente automatisée (c'est déjà en route : Tokn, l'espace Marques, le Diggeur). Vous devez produire trois fois plus à deux, sans embaucher. Mais tout ce qui est IA reste en coulisses et dit comme tel.</p></div>
+        <div class="spec"><span class="num">E</span><h3>La relation vraie</h3><p>Répondre, rencontrer, réunir. Un groupe de 500 personnes qui vous font confiance vaut plus que 200 000 abonnés qui scrollent. Les marques le mesurent déjà (sentiment, pas vues).</p></div>
+        <div class="spec"><span class="num">F</span><h3>Les compétences qui ne s'automatisent pas</h3><p>Négocier, vendre, parler en public, décider vite, tenir un contrat, gérer de l'argent. Et le corps : dans un métier où tu es le produit, la santé est l'outil de travail numéro un.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="etiquette">08 · Bâtir quelque chose qui dure</span>
+    <div class="verre carte">
+      <h2>La stratégie en trois étages</h2>
+      <div class="grille">
+        <div class="modele"><small>Étage 1 · 2026 à 2028 · la trésorerie</small><b>Produire trois fois plus au même coût.</b> IA sur le montage, la recherche, l'administratif, la prospection. Visage, voix, vécu, avis : 100 % humains, et dit. Les collabs continuent de payer ; l'argent part en réserve et dans la marque, pas dans des outils de plus.</div>
+        <div class="modele"><small>Étage 2 · 2028 à 2031 · la propriété</small><b>Transformer l'audience en actif.</b> Premiers drops de la marque, liste directe, communauté, licence du contenu aux marques plutôt que posts à l'unité. Le court et YouTube deviennent la vitrine de ce que vous possédez, pas la source unique de revenus.</div>
+        <div class="modele"><small>Étage 3 · 2031 à 2041 · le tiers de confiance</small><b>Être la personne et la maison qu'on croit sur la mode au juste prix.</b> Une marque, un média, un réseau d'usines, une communauté, et une entreprise où l'IA fait l'exécution et vous le jugement. Dans le scénario A, vous possédez ; dans le scénario B, vous êtes les plus productifs de votre niche. Vous gagnez dans les deux.</div>
+      </div>
+      <div class="franc"><b>Trois garde-fous.</b> Jamais un contenu IA qui se fait passer pour humain : la confiance est le seul actif qui ne s'achète pas. Mesurer chaque trimestre la part de revenus qui dépend d'une plateforme ou d'un agent. Deux heures par semaine pour apprendre ce que l'IA sait faire de nouveau : l'écart entre ceux qui savent et les autres se creuse chaque mois.</div>
+      <div class="franc"><b>Le contre-argument honnête.</b> Si le scénario A arrive vite, même la marque et la communauté subiront la pression : des produits conçus par IA, des communautés animées par IA. La seule chose qui tient absolument, c'est la personne réelle, dans le monde réel, avec un nom qu'elle met en jeu. Tout le plan tient là-dessus.</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="etiquette">09 · Le jeu · remplacé ou pas ?</span>
+    <div class="verre carte">
+      <h2>Dix situations, trois réponses <span class="score" id="score"></span></h2>
+      <p>D'après les données de cette page : d'ici 2031, cette activité est-elle <b>largement remplacée</b>, <b>transformée</b> ou <b>elle tient</b> ?</p>
+      <p class="question" id="q"></p>
+      <div class="puces" id="choix"></div>
+      <div class="bilan" id="bilan"></div>
+      <button class="suite" id="suite">Situation suivante</button>
+    </div>
+  </section>
+
+  <section>
+    <span class="etiquette">10 · Ce qu'on ne sait pas</span>
+    <div class="verre carte">
+      <h2>Les six inconnues qui changent tout</h2>
+      <div class="grille">
+        <div class="spec"><h3>La vitesse</h3><p>Le doublement des capacités est mesuré entre 89 et 196 jours selon la méthode. Entre les deux, c'est un facteur 4 sur ce qui existe en 2031.</p></div>
+        <div class="spec"><h3>Les goulots</h3><p>Énergie, puces, données, fiabilité sur les tâches floues. Aucun n'est visible aujourd'hui dans les labos ; ça ne veut pas dire qu'il n'y en a pas.</p></div>
+        <div class="spec"><h3>La bulle</h3><p>2 670 milliards de dollars dépensés en 2026. Si les revenus ne suivent pas, un krach ralentirait tout de 3 à 5 ans sans changer la direction.</p></div>
+        <div class="spec"><h3>La loi</h3><p>Règlement européen sur l'IA, droits d'auteur, étiquetage obligatoire, taxe sur l'automatisation. L'Europe pourrait ralentir chez elle ce qui avance ailleurs.</p></div>
+        <div class="spec"><h3>La réaction sociale</h3><p>Le rejet du contenu IA est déjà massif. Il peut devenir politique : boycotts, préférence affichée pour l'humain, labels. C'est plutôt bon pour vous.</p></div>
+        <div class="spec"><h3>Les données elles-mêmes</h3><p>Stanford et la Banque de France disent la même chose : corrélation forte, cause pas encore prouvée. Les taux d'intérêt et le télétravail ont frappé les mêmes métiers en même temps.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pied">
+    <b>Sources (toutes consultées le 19 novembre 2026).</b>
+    <ul style="padding-left:18px;margin:8px 0 0">
+      <li><a href="https://digitaleconomy.stanford.edu/news/canariesaug26/">Stanford Digital Economy Lab, « Canaries in the Coal Mine », révision d'août 2026</a> : écart de 19 % pour les 22-25 ans, savoir codifié contre tacite.</li>
+      <li><a href="https://www.banque-france.fr/fr/publications-et-statistiques/publications/ia-generative-les-premiers-changements-du-marche-du-travail-sur-les-jeunes">Banque de France, billet 463, octobre 2026</a> : embauches en CDI des 21-29 ans, −28 % contre −8 %.</li>
+      <li><a href="https://metr.org/time-horizons/">METR, horizons de tâche</a> et <a href="https://metr.org/blog/2026-01-29-time-horizon-1-1/">Time Horizon 1.1</a> : 17 h, doublement de 89 à 196 jours.</li>
+      <li><a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/">METR, évaluation indépendante de l'accélération de la R&amp;D chez Anthropic, novembre 2026</a> : ×1,9, environ 80 % dû à l'IA.</li>
+      <li><a href="https://www.challengergray.com/">Challenger, Gray &amp; Christmas</a> (87 714 postes, 22 %), <a href="https://www.gartner.com/en/newsroom/press-releases/2026-02-03-gartner-predicts-half-of-companies-that-cut-customer-service-staff-due-to-ai-will-rehire-by-2027">Gartner, février 2026</a> (réembauche d'ici 2027), Forrester (55 % de regrets).</li>
+      <li><a href="https://fred.stlouisfed.org/data/RPSGENAIUSAGESHAREWORK">Fed de Saint-Louis</a> (40,5 % des actifs), <a href="https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251211-2">Eurostat 2025</a> (15,4 %), OpenAI DevDay 2026 (1,2 milliard par semaine).</li>
+      <li><a href="https://blog.robozaps.com/b/what-jobs-will-humanoid-robots-take">RoboZaps, synthèse Morgan Stanley / Goldman Sachs / Roland Berger, juillet 2026</a> : flottes, 62,7 millions d'emplois, vagues 2028 / 2036 / 2040, remboursement en 13 mois.</li>
+      <li><a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025">Forum économique mondial, Future of Jobs 2025</a> : 170 millions créés, 92 millions détruits.</li>
+      <li><a href="https://www.pwc.com/gx/en/issues/artificial-intelligence/job-barometer/2026/2026-global-ai-jobs-barometer-full-report.pdf">PwC, AI Jobs Barometer 2026</a> : postes d'entrée seniorisés +35 %, autres −10 %.</li>
+      <li><a href="https://forecastingresearch.org/research/economic-effects-of-ai">Forecasting Research Institute</a> et <a href="https://tecunningham.github.io/posts/2025-10-19-forecasts-of-AI-growth.html">synthèse des prévisions de croissance</a> : 3,3 % médian, Goldman Sachs +1,5 point, Amodei 10 à 15 %.</li>
+      <li><a href="https://aimultiple.com/ai-job-loss">Metaculus via AIMultiple</a> : −11,4 % financiers, développeurs, juristes d'ici 2035.</li>
+      <li><a href="https://www.anthropic.com/research/economic-index-june-2026-report">Anthropic Economic Index, juin 2026</a> : écart de 10 points entre débutants et expérimentés ; 49 % des métiers avec usage sur un quart des tâches.</li>
+      <li><a href="https://digiday.com/media/after-an-oversaturation-of-ai-generated-content-creators-authenticity-and-messiness-are-in-high-demand/">Digiday, janvier 2026</a> (Billion Dollar Boy : 26 % contre 60 %), Sprout Social 2026 (88 %), <a href="https://www.deloitte.com/us/en/programs/chief-marketing-officer/articles/content-creator-economy.html">Deloitte, Creator Economy in 3D</a> (3 sur 5), <a href="https://theprnet.com/journals/future-of-influence-2026-creator-economy">PR Net, 2026</a>.</li>
+      <li><a href="https://www.articsledge.com/post/generative-ai-genai-statistics">Gartner via Artic Sledge</a> : 2 670 milliards de dollars de dépenses IA en 2026.</li>
+    </ul>
+    <p style="margin-top:12px">Les prévisions à 5 et 15 ans sont des lectures de ces sources, pas des faits. Page faite par Claude pour Damien et Emilio.</p>
+  </div>
+</main>
+<script>
+(function(){
+var Q=[
+ {q:"Monter un reel à partir de rushs déjà choisis, sous-titres compris.",r:0,e:"Remplacé. Les outils le font déjà ; en 2031 c'est un bouton. Le choix des prises et le rythme restent du goût, donc humains plus longtemps."},
+ {q:"Tester une veste trois semaines sous la pluie à Tokyo et raconter ce qu'on a vu.",r:2,e:"Ça tient. Savoir tacite, présence physique, vécu : les trois choses que les études placent hors de portée."},
+ {q:"Électricien qui câble un centre de données.",r:2,e:"Ça tient, et la demande monte. Les humanoïdes visent d'abord l'usine et l'entrepôt, pas les chantiers imprévisibles."},
+ {q:"Juriste junior qui relit un contrat de collab.",r:0,e:"Remplacé pour l'essentiel. Le juriste senior qui engage sa responsabilité, lui, reste."},
+ {q:"Comptable d'une petite société.",r:1,e:"Transformé. La saisie et le rapprochement disparaissent ; le conseil, la responsabilité fiscale et la relation client restent."},
+ {q:"Un site qui liste « les 10 meilleures doudounes » sans auteur visible.",r:0,e:"Remplacé par les agents d'achat intégrés aux assistants. Une sélection signée et vécue par une personne connue : ça tient."},
+ {q:"Développeur qui code une application web classique.",r:1,e:"Transformé, fortement. Metaculus prévoit −11 % d'emplois d'ici 2035. Le développeur devient chef d'agents ; le code à la main disparaît."},
+ {q:"Aide-soignante en maison de retraite.",r:2,e:"Ça tient. Pénurie, présence, corps, relation. Les robots d'assistance arrivent après 2036 et pour le portage, pas pour le soin."},
+ {q:"Négocier le prix d'une collab avec une marque.",r:1,e:"Transformé. L'IA prépare, chiffre et rédige ; la décision et la relation avec la personne en face restent humaines, et c'est là que se joue l'argent."},
+ {q:"Service client par chat d'une boutique en ligne.",r:0,e:"Remplacé, avec un boomerang : la moitié des entreprises qui ont tout coupé réembauchent pour les cas difficiles. Le volume humain baisse quand même de beaucoup."}
+];
+var L=["Largement remplacé","Transformé","Ça tient"];
+var i=0,s=0,done=false;
+var q=document.getElementById('q'),c=document.getElementById('choix'),b=document.getElementById('bilan'),n=document.getElementById('suite'),sc=document.getElementById('score');
+function show(){done=false;var it=Q[i];q.textContent=(i+1)+' / '+Q.length+' · '+it.q;b.textContent='';n.classList.remove('vu');c.innerHTML='';
+ L.forEach(function(l,k){var p=document.createElement('button');p.className='puce';p.textContent=l;p.onclick=function(){if(done)return;done=true;
+  if(k===it.r){s++;p.classList.add('on');}else{p.classList.add('faux');c.children[it.r].classList.add('on');}
+  b.textContent=it.e;sc.textContent=s+' / '+(i+1);n.textContent=i<Q.length-1?'Situation suivante':'Recommencer';n.classList.add('vu');};c.appendChild(p);});}
+n.onclick=function(){i++;if(i>=Q.length){i=0;s=0;sc.textContent='';}show();};
+show();
+})();
+</script>
+</body>
+</html>
